@@ -3,20 +3,21 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 function Hero() {
+
   const tedxLogoRef = useRef(null);
 
   useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
-    gsap.to(tedxLogoRef.current, {
-      y: -100,
-      duration: 1,
-      ease: "power3.out",
+    const tl = gsap.timeline({
       scrollTrigger: {
         trigger: tedxLogoRef.current,
-        start: "top 80%",
-        end: "bottom 20%",
         scrub: true,
+        start: 'top center',
+        end: 'bottom center',
       },
+    });
+
+    tl.to(tedxLogoRef.current, {
+      y: '-100%',
     });
   }, []);
 
